@@ -18,4 +18,4 @@ npm run dev \
 
 
 # Results:
-you should see that if you open http://localhost:5173/ in your browser, you will see the frontend of the project. You can click on the "Get Data" button to fetch data from the backend and display it on the page.
+you should see that if you open http://localhost:5173/ in your browser, you will see the frontend of the project. You can do f12 and navigate to the console to see the logs of the backend and frontend. You can also navigate to http://localhost:5000/ to see the backend logs.
