@@ -7,9 +7,9 @@ User=app
 Group=www-data
 
 WorkingDirectory=/home/app/projectdatabases/project/backend
-Environment="PATH=/home/app/projectdatabases/project/backend/vennv/bin"
+Environment="PATH=/home/app/projectdatabases/project/backend/venv/bin"
 
-ExecStart=/home/app/projectdatabases/project/backend/vennv/bin/gunicorn \
+ExecStart=/home/app/projectdatabases/project/backend/venv/bin/gunicorn \
   --workers 3 \
   --bind unix:/home/app/projectdatabases/project/backend/webapp.sock \
   -m 007 \
