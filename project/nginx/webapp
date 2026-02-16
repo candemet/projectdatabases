@@ -2,8 +2,17 @@ server {
     listen 80;
     server_name 0.0.0.0 team[x].ua-ppdb.me;
 
-    location / {
+    # API naar Flask
+    location /api/ {
         include proxy_params;
-        proxy_pass http://unix:/home/app/PPDB-Template/src/webapp.sock;
+        proxy_pass http://unix:/home/app/projectdatabases/src/webapp.sock;
+    }
+
+    # Frontend (Vite build)
+    root /home/app/projectdatabases/frontend/dist;
+    index index.html;
+
+    location / {
+        try_files $uri /index.html;
     }
 }

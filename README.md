@@ -6,15 +6,18 @@ Programming Project Databases UAntwerpen
 # python3 -m pip install -r requirements.txt
 # To run the project, use:
 See the folders backend and frontend and open 2 terminals, one for each. In the backend terminal, run:
-# Start the backend:
-cd backend \
-source vennv/bin/activate \
-python3 app.py \
 
-# And in the frontend terminal, run:
+
+# Terminal 1 (backend):
+
+cd backend \
+source venv/bin/activate \
+python app.py 
+
+# Terminal 2 (frontend):
+
 cd frontend \
-npm install \
-npm run dev \
+npm run dev 
 
 
 # Results:
