@@ -1,10 +1,20 @@
-import { useState } from 'react'
+import {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+    const [count, setCount] = useState(0)
+
+  //Test to see if the backend is working by fetching the health endpoint
+  fetch('./api/health')
+  .then(response => response.json())
+  .then(data => {
+  //You can use the data in anyway you want
+   console.log(data);
+  });
+
 
   return (
     <>

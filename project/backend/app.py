@@ -9,6 +9,14 @@ HOST = "127.0.0.1" if DEBUG else "0.0.0.0"
 # Initialize the Flask app
 app = Flask(__name__)
 
+@app.get("/")
+def root():
+    return {"status": "backend ok"}
+
+
+@app.get("/api/health")
+def health():
+    return jsonify({"status": "ok"})
 
 ##################
 # RUN DEV SERVER #
