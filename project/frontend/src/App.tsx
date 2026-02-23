@@ -1,4 +1,10 @@
+<<<<<<< frontend
 import { useState } from 'react'
+=======
+import {useState} from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '../public/vite.svg'
+>>>>>>> main
 import './App.css'
 import courtsBg from './assets/court.jpeg'
 
@@ -109,7 +115,7 @@ export default function App() {
       <nav className="navbar">
         <div className="nav-brand" onClick={() => setView('home')}>
           <span className="nav-logo">🎾</span>
-          <span className="nav-title">ClubServe</span>
+          <span className="nav-title">MatchUp</span>
         </div>
         <div className="nav-links">
           <button className={`nav-btn ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}>Home</button>
