@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import courtsBg from './assets/court.jpeg'
 
+
 type View = 'home' | 'login' | 'register'
 
 interface User {
