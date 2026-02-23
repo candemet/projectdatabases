@@ -108,7 +108,7 @@ export default function App() {
       <nav className="navbar">
         <div className="nav-brand" onClick={() => setView('home')}>
           <span className="nav-logo">🎾</span>
-          <span className="nav-title">ClubServe</span>
+          <span className="nav-title">MatchUp</span>
         </div>
         <div className="nav-links">
           <button className={`nav-btn ${view === 'home' ? 'active' : ''}`} onClick={() => setView('home')}>Home</button>
