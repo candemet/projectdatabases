@@ -10,8 +10,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      # Stap 1: build de frontend in GitHub Actions
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-      # Stap 1: Bestanden overzetten naar de server
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm install
+          npm run build
+
+      # Stap 2: kopieer
       - name: Copy files via SSH
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -20,10 +31,10 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."
           target: "~/projectdatabases"
-          rm: true 
-          exclude: ".git,.github,.gitignore"
+          rm: false
+          exclude: ".git,.github,.gitignore" 
 
-      # Stap 2: Commando's uitvoeren
+      # Stap 3: commando's
       - name: Execute remote commands
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -31,6 +42,7 @@ jobs:
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd ~/projectdatabases/frontend
-            npm install
-            npm run build
+            # Als je ook een backend hebt die npm install nodig heeft:
+            # cd ~/projectdatabases && npm install --production
+            sudo systemctl restart nginx
+            sudo systemctl restart webapp
