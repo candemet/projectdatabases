@@ -19,7 +19,7 @@ jobs:
       - name: Build frontend
         run: |
           cd frontend
-          npm install
+          npm ci --legacy-peer-deps
           npm run build
 
       # Stap 2: kopieer
