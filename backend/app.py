@@ -28,7 +28,7 @@ def create_app(test_config=None):
     def login():
         pass
 
-    @app.route("/api/register", methods=["POST"])
+    @app.route("/api/auth/register", methods=["POST"])
     def register():
         try:
             # Haal gegevens op uit de JSON-request
@@ -39,9 +39,8 @@ def create_app(test_config=None):
             for field in required_fields:
                 if field not in data:
                     return jsonify({"error": f"Missing field: {field}"}), 400
-        except Exception as e:
-            # Foutafhandeling
-            return jsonify({"error": str(e)}), 500
+        except Exception:
+            return jsonify({"error": "Invalid request format"}), 400
 
         # Registreer de gebruiker
         result = register_user(
