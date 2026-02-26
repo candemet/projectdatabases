@@ -1,8 +1,9 @@
 import psycopg
 from config import config_data as config
+from flask import current_app
 
 def get_conn():
-    return psycopg.connect(config['db_connstr'])
+    return psycopg.connect(current_app.config["DB_CONNSTR"])
 
 def init_db():
     schema = """
