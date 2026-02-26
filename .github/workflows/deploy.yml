@@ -19,7 +19,7 @@ jobs:
       - name: Build frontend
         run: |
           cd frontend
-          npm install
+          npm ci --legacy-peer-deps
           npm run build
 
       # Stap 2: kopieer
@@ -29,10 +29,9 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
+          source: "frontend/., backend/., nginx/., service/."
           target: "~/projectdatabases"
           rm: false
-          exclude: ".git,.github,.gitignore" 
 
       # Stap 3: commando's
       - name: Execute remote commands
@@ -44,5 +43,8 @@ jobs:
           script: |
             # Als je ook een backend hebt die npm install nodig heeft:
             # cd ~/projectdatabases && npm install --production
+            cd ~/projectdatabases/backend
+            source venv/bin/activate
+            pip install -r requirements.txt
             sudo systemctl restart nginx
             sudo systemctl restart webapp
