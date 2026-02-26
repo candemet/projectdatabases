@@ -3,19 +3,12 @@ from datetime import datetime, timedelta
 from config import config_data as config
 from db import get_conn
 import psycopg
+from werkzeug.security import generate_password_hash, check_password_hash
 
-def hash_password(password: str) -> str:
-    #Hash a password using SHA-256.
-    return hashlib.sha256(password.encode()).hexdigest()
-
-
-def verify_password(password: str, password_hash: str) -> bool:
-    #Verify a password against its hash.
-    return hash_password(password) == password_hash
 
 def register_user(first_name, last_name, email, age, sport, skill_level, club, password):
     #Register a new user with hashed password.
-    password_hash = hash_password(password)
+    password_hash = generate_password_hash(password)
     #Insert user into database (not implemented here)
 
     with get_conn() as conn:
