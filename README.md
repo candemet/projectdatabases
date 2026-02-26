@@ -26,8 +26,8 @@ npm run dev
 Alle tests runnen
 
 cd backend\
-pytest -q
-
+pytest -q\
+For pycharm check to see if working directory is set to projectdatabases/backend
 # Results:
 you should see that if you open http://localhost:5173/ in your browser, you will see the frontend of the project.\
 You can do f12 and navigate to the console to see the logs of the backend and frontend. You can also navigate to http://localhost:5000/ to see the backend logs.

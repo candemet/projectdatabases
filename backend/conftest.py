@@ -14,6 +14,12 @@ def db_conn():
         conn.rollback()
         conn.close()
 
+@pytest.fixture()
+def clean_users_db():
+    with psycopg.connect(TEST_DB_CONNSTR) as conn:
+        with conn.cursor() as cur:
+            cur.execute("TRUNCATE TABLE users RESTART IDENTITY CASCADE;")
+        conn.commit()
 
 @pytest.fixture()
 def app():
