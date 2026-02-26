@@ -29,10 +29,9 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "."
+          source: "frontend/., backend/., nginx/., service/."
           target: "~/projectdatabases"
           rm: false
-          exclude: ".git,.github,.gitignore" 
 
       # Stap 3: commando's
       - name: Execute remote commands
